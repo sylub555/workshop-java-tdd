@@ -1,5 +1,7 @@
 package day01;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.DisplayName;
@@ -21,4 +23,11 @@ class MyRangeFailureTest {
 		}
 	}
 
+	@Test
+	@DisplayName("ขึ้นต้นด้วย [, ( เท่านั้น input = 1,5] with junit 5")
+	void case02() {
+		MyRange range = new MyRange("1,5]");
+		Exception e = assertThrowsExactly(InputInvalidException.class, range::validate);
+		assertEquals("Input error", e.getMessage());
+	}
 }
