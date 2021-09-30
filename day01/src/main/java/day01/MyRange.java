@@ -13,7 +13,8 @@ public class MyRange {
 	}
 
 	public int getStart() {
-		return Integer.parseInt(input.substring(1, 2));
+		final int result = Integer.parseInt(input.substring(1, 2));
+		return startWithInclude() ? result : result + 1;
 	}
 
 }
