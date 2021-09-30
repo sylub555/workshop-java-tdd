@@ -61,4 +61,13 @@ class MyRangeTest {
 		assertEquals(4, result);
 	}
 
+	@Test
+	@DisplayName("เรียงลำดับตัวเลย เป็น 1-5 input = [1,5], result = 1,2,3,4,5")
+	void case103() {
+		String input = "[1,5]";
+		MyRange range = new MyRange(input);
+		String result = range.getRange();
+		assertEquals("1,2,3,4,5", result);
+	}
+
 }
