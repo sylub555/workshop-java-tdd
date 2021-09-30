@@ -52,4 +52,13 @@ class MyRangeTest {
 		assertEquals(5, result);
 	}
 
+	@Test
+	@DisplayName("ตัวเลขสุดท้าย เป็น 5 input = [1,5), result = 4")
+	void case102() {
+		String input = "[1,5)";
+		MyRange range = new MyRange(input);
+		int result = range.getEnd();
+		assertEquals(4, result);
+	}
+
 }
