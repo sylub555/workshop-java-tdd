@@ -12,4 +12,8 @@ public class MyRange {
 		return input.charAt(0) == '[';
 	}
 
+	public int getStart() {
+		return Integer.parseInt(input.substring(1, 2));
+	}
+
 }
