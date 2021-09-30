@@ -33,4 +33,10 @@ public class MyRange {
 		return IntStream.rangeClosed(getStart(), getEnd()).mapToObj(Integer::toString).collect(Collectors.joining(","));
 	}
 
+	public void validate() {
+		if (!input.matches("(\\(|\\[)")) {
+			throw new InputInvalidException("Input error");
+		}
+	}
+
 }
