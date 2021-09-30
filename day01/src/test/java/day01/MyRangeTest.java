@@ -78,7 +78,7 @@ class MyRangeTest {
 		String result = range.getRange();
 		assertEquals("1,2,3,4", result);
 	}
-	
+
 	@Test
 	@DisplayName("เรียงลำดับตัวเลย เป็น 1-5 input = (1,5], result = 2,3,4,5")
 	void case105() {
@@ -87,7 +87,7 @@ class MyRangeTest {
 		String result = range.getRange();
 		assertEquals("2,3,4,5", result);
 	}
-	
+
 	@Test
 	@DisplayName("เรียงลำดับตัวเลย เป็น 1-5 input = (1,5), result = 2,3,4")
 	void case106() {
@@ -96,9 +96,9 @@ class MyRangeTest {
 		String result = range.getRange();
 		assertEquals("2,3,4", result);
 	}
-	
+
 	@Test
-	@DisplayName("เรียงลำดับตัวเลย เป็น 1-5 input = [0,5], result = 0,1,2,3,4,5,6,7,8,9")
+	@DisplayName("เรียงลำดับตัวเลย เป็น 1-9 input = [0,9], result = 0,1,2,3,4,5,6,7,8,9")
 	void case107() {
 		String input = "[0,9]";
 		MyRange range = new MyRange(input);
