@@ -34,7 +34,7 @@ public class MyRange {
 	}
 
 	public void validate() {
-		if (!input.matches("(\\(|\\[)")) {
+		if (!input.matches("^([\\(\\[])")) {
 			throw new InputInvalidException("Input error");
 		}
 	}
