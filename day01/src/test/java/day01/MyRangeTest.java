@@ -96,5 +96,14 @@ class MyRangeTest {
 		String result = range.getRange();
 		assertEquals("2,3,4", result);
 	}
+	
+	@Test
+	@DisplayName("เรียงลำดับตัวเลย เป็น 1-5 input = [0,5], result = 0,1,2,3,4,5,6,7,8,9")
+	void case107() {
+		String input = "[0,9]";
+		MyRange range = new MyRange(input);
+		String result = range.getRange();
+		assertEquals("0,1,2,3,4,5,6,7,8,9", result);
+	}
 
 }
