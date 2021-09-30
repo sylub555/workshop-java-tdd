@@ -1,8 +1,6 @@
 package day01;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Random;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +8,7 @@ class IdGeneratreServiceTest {
 
 	@Test
 	void test_getData() {
-		Random stub = new Random6();
+		Random6 stub = new Random6();
 		IdGeneratreService service = new IdGeneratreService();
 		service.setRandom(stub);
 		String result = service.getData();
@@ -28,7 +26,7 @@ class IdGeneratreServiceTest {
 
 }
 
-class Random6 extends Random {
+class Random6 implements MyRandom {
 
 	@Override
 	public int nextInt(int bound) {
@@ -37,7 +35,7 @@ class Random6 extends Random {
 
 }
 
-class SpyRandom extends Random {
+class SpyRandom implements MyRandom {
 
 	private int count = 0;
 
