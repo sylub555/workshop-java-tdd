@@ -1,9 +1,12 @@
 package day01;
 
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class MyRange {
+
+	private static final Pattern INPUT_PATTERN = Pattern.compile("^([\\(\\[])(\\d),(\\d)([\\)\\]])$");
 
 	private String input;
 
@@ -34,7 +37,7 @@ public class MyRange {
 	}
 
 	public void validate() {
-		if (!input.matches("^([\\(\\[])")) {
+		if (!INPUT_PATTERN.matcher(input).matches()) {
 			throw new InputInvalidException("Input error");
 		}
 	}
