@@ -6,11 +6,18 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 @Service
 public class EmployeeService {
 
-	@Autowired
 	private EmployeeRepository repository;
+
+	@Autowired
+	public EmployeeService(EmployeeRepository repository) {
+		this.repository = repository;
+	}
 
 	public EmployeeResponse getId(int id) {
 		return repository.findById(id).map(emp -> {
