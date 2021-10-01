@@ -64,4 +64,17 @@ class RegisterBusinessFailureTest {
 		assertEquals("Speaker doesn't meet our standard rules.", exception.getMessage());
 	}
 
+	@Test
+	void case06_can_not_save() {
+		RegisterBusiness business = new RegisterBusiness();
+		Speaker speaker = new Speaker();
+		speaker.setFirstName("firstName");
+		speaker.setLastName("lastName");
+		speaker.setEmail("email@gmail.com");
+		Exception exception = assertThrows(SaveSpeakerException.class, () -> {
+			business.register(null, speaker);
+		});
+		assertEquals("Can't save a speaker.", exception.getMessage());
+	}
+
 }
