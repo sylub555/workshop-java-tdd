@@ -104,4 +104,24 @@ class RegisterBusinessTest {
 		};
 		business.register(repository, speaker);
 	}
+
+	@Test
+	void case06() {
+		RegisterBusiness business = new RegisterBusiness();
+		Speaker speaker = new Speaker();
+		speaker.setFirstName("firstName");
+		speaker.setLastName("lastName");
+		speaker.setEmail("email@gmail.com");
+		speaker.setExp(10);
+		SpeakerRepository repository = new SpeakerRepository() {
+
+			@Override
+			public Integer saveSpeaker(Speaker speaker) {
+				assertEquals(0, speaker.getRegistrationFee());
+				return 100;
+			}
+
+		};
+		business.register(repository, speaker);
+	}
 }
