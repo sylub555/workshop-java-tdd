@@ -26,4 +26,16 @@ class RegisterBusinessFailureTest {
 		assertEquals("Last name is required.", exception.getMessage());
 	}
 
+	@Test
+	void case03_email_required() {
+		RegisterBusiness business = new RegisterBusiness();
+		Speaker speaker = new Speaker();
+		speaker.setFirstName("firstName");
+		speaker.setLastName("lastName");
+		Exception exception = assertThrows(ArgumentNullException.class, () -> {
+			business.register(null, speaker);
+		});
+		assertEquals("Email is required.", exception.getMessage());
+	}
+
 }
