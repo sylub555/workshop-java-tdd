@@ -28,4 +28,18 @@ class EmployeeControllerWebMvcTest {
 		assertEquals("hello world", result.getName());
 	}
 
+	@Test
+	void getAll() throws Exception {
+		var mvcResult = mvc.perform(get("/employee")).andExpect(status().isOk()).andReturn();
+		var results = objectMapper.readValue(mvcResult.getResponse().getContentAsByteArray(), EmployeeResponse[].class);
+		
+		assertEquals(2, results.length);
+
+		assertEquals(1, results[0].getId());
+		assertEquals("hello", results[0].getName());
+
+		assertEquals(2, results[1].getId());
+		assertEquals("world", results[1].getName());
+	}
+
 }
