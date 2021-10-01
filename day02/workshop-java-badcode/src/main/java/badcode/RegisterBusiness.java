@@ -2,6 +2,7 @@ package badcode;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class RegisterBusiness {
@@ -32,9 +33,8 @@ public class RegisterBusiness {
 			throw new ArgumentNullException("Email is required.");
 		}
 
-		Set<String> domains = new HashSet<>(Arrays.asList("gmail.com", "live.com"));
 		String emailDomain = getEmailDomain(speaker.getEmail());
-		if (!domains.contains(emailDomain)) {
+		if (!emailDomain.matches("(gmail|live).com")) {
 			throw new SpeakerDoesntMeetRequirementsException("Speaker doesn't meet our standard rules.");
 		}
 	}
