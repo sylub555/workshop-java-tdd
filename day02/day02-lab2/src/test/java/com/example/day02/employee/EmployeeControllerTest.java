@@ -14,8 +14,15 @@ class EmployeeControllerTest {
 	@Autowired
 	TestRestTemplate restTemplate;
 
+	@Autowired
+	EmployeeRepository employeeRepository;
+
 	@Test
 	void getById() {
+		// Arrage
+		Employee demo = new Employee(1, "hello world");
+		employeeRepository.save(demo);
+
 		// Act
 		var result = restTemplate.getForObject("/employee/1", EmployeeResponse.class);
 
@@ -26,12 +33,16 @@ class EmployeeControllerTest {
 
 	@Test
 	void getAll() {
+		// Arrage
+		employeeRepository.save(new Employee(1, "hello"));
+		employeeRepository.save(new Employee(2, "world"));
+
 		// Act
 		var results = restTemplate.getForObject("/employee", EmployeeResponse[].class);
 
 		// Assert
 		assertEquals(2, results.length);
-		
+
 		assertEquals(1, results[0].getId());
 		assertEquals("hello", results[0].getName());
 
