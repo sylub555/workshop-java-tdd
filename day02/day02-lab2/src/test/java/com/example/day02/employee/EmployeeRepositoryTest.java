@@ -27,4 +27,13 @@ class EmployeeRepositoryTest {
 		assertEquals("hello world", result.get().getName());
 	}
 
+	@Test
+	void case02() {
+		// Act
+		var result = employeeRepository.findById(1);
+		
+		// Assert
+		assertFalse(result.isPresent());
+	}
+
 }
