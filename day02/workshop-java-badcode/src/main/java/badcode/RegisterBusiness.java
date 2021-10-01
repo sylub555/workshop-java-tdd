@@ -6,9 +6,15 @@ public class RegisterBusiness {
 
 	public Integer register(SpeakerRepository repository, Speaker speaker) {
 		Integer speakerId;
+		
+		// Validate input
 		validateInput(speaker);
+		
+		// Fee calculation
 		int exp = speaker.getExp();
 		speaker.setRegistrationFee(getFee(exp));
+		
+		// Save speaker
 		try {
 			speakerId = repository.saveSpeaker(speaker);
 		} catch (Exception exception) {
