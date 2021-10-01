@@ -1,6 +1,8 @@
 package badcode;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RegisterBusiness {
 
@@ -29,9 +31,10 @@ public class RegisterBusiness {
 		if (isNullOrEmpty(speaker.getEmail())) {
 			throw new ArgumentNullException("Email is required.");
 		}
-		String[] domains = { "gmail.com", "live.com" };
-		String emailDomain = getEmailDomain(speaker.getEmail()); // Avoid ArrayIndexOutOfBound
-		if (Arrays.stream(domains).filter(it -> it.equals(emailDomain)).count() != 1) {
+
+		Set<String> domains = new HashSet<>(Arrays.asList("gmail.com", "live.com"));
+		String emailDomain = getEmailDomain(speaker.getEmail());
+		if (!domains.contains(emailDomain)) {
 			throw new SpeakerDoesntMeetRequirementsException("Speaker doesn't meet our standard rules.");
 		}
 	}
