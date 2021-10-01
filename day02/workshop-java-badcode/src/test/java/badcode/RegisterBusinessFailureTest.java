@@ -38,4 +38,17 @@ class RegisterBusinessFailureTest {
 		assertEquals("Email is required.", exception.getMessage());
 	}
 
+	@Test
+	void case04_email_domain_invalid() {
+		RegisterBusiness business = new RegisterBusiness();
+		Speaker speaker = new Speaker();
+		speaker.setFirstName("firstName");
+		speaker.setLastName("lastName");
+		speaker.setEmail("email");
+		Exception exception = assertThrows(DomainEmailInvalidException.class, () -> {
+			business.register(null, speaker);
+		});
+		assertNull(exception.getMessage());
+	}
+
 }
