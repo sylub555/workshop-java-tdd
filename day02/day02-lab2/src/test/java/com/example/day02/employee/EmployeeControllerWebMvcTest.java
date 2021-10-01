@@ -22,7 +22,7 @@ class EmployeeControllerWebMvcTest {
 
 	@Test
 	void getById() throws Exception {
-		var mvcResult = mvc.perform(get("employee/1")).andExpect(status().isOk()).andReturn();
+		var mvcResult = mvc.perform(get("/employee/1")).andExpect(status().isOk()).andReturn();
 		var result = objectMapper.readValue(mvcResult.getResponse().getContentAsByteArray(), EmployeeResponse.class);
 		assertEquals(1, result.getId());
 		assertEquals("hello world", result.getName());
