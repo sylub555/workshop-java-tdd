@@ -51,4 +51,17 @@ class RegisterBusinessFailureTest {
 		assertNull(exception.getMessage());
 	}
 
+	@Test
+	void case05_email_not_meer_rules() {
+		RegisterBusiness business = new RegisterBusiness();
+		Speaker speaker = new Speaker();
+		speaker.setFirstName("firstName");
+		speaker.setLastName("lastName");
+		speaker.setEmail("email@localhost");
+		Exception exception = assertThrows(SpeakerDoesntMeetRequirementsException.class, () -> {
+			business.register(null, speaker);
+		});
+		assertEquals("Speaker doesn't meet our standard rules.", exception.getMessage());
+	}
+
 }
