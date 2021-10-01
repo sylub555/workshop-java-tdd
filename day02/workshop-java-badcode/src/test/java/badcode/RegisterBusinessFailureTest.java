@@ -3,23 +3,30 @@ package badcode;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class RegisterBusinessFailureTest {
 
-	@Test
-	void case01_first_name_required() {
+	@ParameterizedTest
+	@CsvSource(value = { "null", "''" }, nullValues = { "null" })
+	void case01_first_name_required(String firstName) {
 		RegisterBusiness business = new RegisterBusiness();
+		Speaker speaker = new Speaker();
+		speaker.setFirstName(firstName);
 		Exception exception = assertThrows(ArgumentNullException.class, () -> {
 			business.register(null, new Speaker());
 		});
 		assertEquals("First name is required.", exception.getMessage());
 	}
 
-	@Test
-	void case02_last_name_required() {
+	@ParameterizedTest
+	@CsvSource(value = { "null", "''" }, nullValues = { "null" })
+	void case02_last_name_required(String lastName) {
 		RegisterBusiness business = new RegisterBusiness();
 		Speaker speaker = new Speaker();
 		speaker.setFirstName("firstName");
+		speaker.setLastName(lastName);
 		Exception exception = assertThrows(ArgumentNullException.class, () -> {
 			business.register(null, speaker);
 		});
